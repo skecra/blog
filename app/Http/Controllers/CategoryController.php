@@ -14,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('back.categories.index');
+        $categories = Category::all();
+        return view('back.categories.index', compact('categories'));
     }
 
     /**
@@ -24,7 +25,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('back.categories.create');
+        $categories = Category::all();
+        return view('back.categories.create', compact('categories'));
     }
 
     /**
@@ -33,9 +35,20 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Catgegory $category)
     {
-        Category::create($request->post());
+        if($request->has('image')){
+            $oldImage = $post->image;
+            $this->uploadImage($request);
+            if(file_exists(public_path('images/'.$oldImage))){
+                unlink(public_path('images/'.$oldImage));
+            }
+            $category->image = $request->post()['image'];
+        }
+        $category->title = $request->title;
+
+        $category->create();
+        // Category::create($request->post());
         return redirect()->route('categories.index')->with('message', 'Category created successfully');
     }
 
@@ -59,7 +72,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $category->update($request->post());
+        if($request->has('image')){
+            $oldImage = $post->image;
+            $this->uploadImage($request);
+            if(file_exists(public_path('images/'.$oldImage))){
+                unlink(public_path('images/'.$oldImage));
+            }
+            $category->image = $request->post()['image'];
+        }
+    
+        $category->title = $request->title;
+
+        // $category->update($request->post());
+        $category->save();
         return back()->with(['ok' => 'The category has been updated successfully']);
     }
 
@@ -73,5 +98,14 @@ class CategoryController extends Controller
     {
         $category->delete();
         return back();
+    }
+
+    public function uploadImage($request){
+        $image = $request->file('image');
+        $imageName = time().$image->getClientOriginalName();
+        // add the new file
+        $image->move(public_path('images'),$imageName);
+        $request->merge(['image' => $imageName]);
+        // dd($request);
     }
 }

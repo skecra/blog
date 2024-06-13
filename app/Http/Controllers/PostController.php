@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\{Post, Category};
 use Illuminate\Http\Request;
 
+
 class PostController extends Controller
 {
 
@@ -32,7 +33,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('back.posts.create');
+        $categories = Category::all();
+        return view('back.posts.create', compact('categories'));
     }
 
     /**
@@ -49,6 +51,7 @@ class PostController extends Controller
         }
         $request->user()->posts()->create($request->post());
 
+        dd($request);
         return redirect()->route('posts.index')->with('message', 'Post created successfully');
     }
 
@@ -71,7 +74,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('back.posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('back.posts.edit', compact('post', 'categories'));
     }
 
     /**
