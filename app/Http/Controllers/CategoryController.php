@@ -35,19 +35,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Catgegory $category)
+    public function store(Request $request, Category $category)
     {
         if($request->has('image')){
-            $oldImage = $post->image;
-            $this->uploadImage($request);
-            if(file_exists(public_path('images/'.$oldImage))){
-                unlink(public_path('images/'.$oldImage));
-            }
-            $category->image = $request->post()['image'];
+           $image =  $this->uploadImage($request);
         }
         $category->title = $request->title;
+        $category->image = $image;
 
-        $category->create();
+        $category->save();
         // Category::create($request->post());
         return redirect()->route('categories.index')->with('message', 'Category created successfully');
     }
@@ -73,7 +69,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         if($request->has('image')){
-            $oldImage = $post->image;
+            $oldImage = $category->image;
             $this->uploadImage($request);
             if(file_exists(public_path('images/'.$oldImage))){
                 unlink(public_path('images/'.$oldImage));
@@ -100,12 +96,35 @@ class CategoryController extends Controller
         return back();
     }
 
-    public function uploadImage($request){
+    public function uploadImage($request)
+{
+    // Check if the request has a file and if it's valid
+    if ($request->hasFile('image') && $request->file('image')->isValid()) {
         $image = $request->file('image');
-        $imageName = time().$image->getClientOriginalName();
-        // add the new file
-        $image->move(public_path('images'),$imageName);
-        $request->merge(['image' => $imageName]);
-        // dd($request);
+
+        // Generate a unique name for the image
+        $imageName = time() . '_' . $image->getClientOriginalName();
+
+        // Move the image to the public/images directory
+        $destinationPath = public_path('images');
+        
+        // Ensure the directory exists and is writable
+        if (!is_dir($destinationPath)) {
+            mkdir($destinationPath, 0777, true);
+        }
+        
+        // Move the image to the destination path
+        if ($image->move($destinationPath, $imageName)) {
+            // Return the new image name
+            return $imageName;
+        } else {
+            // Handle the error
+            throw new \Exception('Failed to move the uploaded file.');
+        }
+    } else {
+        // Handle the error
+        throw new \Exception('No valid image file found in the request.');
     }
+}
+
 }

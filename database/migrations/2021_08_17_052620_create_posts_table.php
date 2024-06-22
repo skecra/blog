@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id')
                   ->constrained()
                   ->onDelete('cascade')
-                  ->onUpdate('cascade');
+                  ->onUpdate('cascade')->nullable();
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('excerpt');
@@ -38,6 +38,9 @@ class CreatePostsTable extends Migration
                   ->constrained()
                   ->onUpdate('cascade')
                   ->onDelete('cascade');
+            $table->timestamps();
+            
+
         });
 
         Schema::create('post_tag', function(Blueprint $table) {

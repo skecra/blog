@@ -49,7 +49,6 @@
                     <tbody>
                         @foreach ($posts as $post)
                             <tr>
-                        {@dd($posts)}
 
                                 <td>{{ $loop->iteration }}</td>
                                 <td>

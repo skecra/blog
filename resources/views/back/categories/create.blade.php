@@ -15,7 +15,7 @@
 @section('content')
     <!-- Main content -->
     <section class="content">
-        <form method="POST" action="{{ route('categories.store') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('categories.store') }}">
             @csrf
             <div class="row">
                 <div class="col-md-12">
@@ -27,6 +27,10 @@
                             <div class="form-group">
                                 <label for="title">Category Name </label>
                                 <input type="text" name="title" id="title" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Category Image</label>
+                                <input type="file" name="image" class="form-control-file" id="image">
                             </div>
                         </div>
                         <!-- /.card-body -->
