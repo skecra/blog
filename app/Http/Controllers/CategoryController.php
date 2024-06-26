@@ -90,8 +90,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category, Request $request)
     {
+        dd($request);
         $category->delete();
         return back();
     }

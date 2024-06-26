@@ -11,7 +11,7 @@
                         <div class="row s-hero__slide-content animate-this">
                             <div class="column">
                                 <div class="s-hero__slide-meta">
-                                    <span class="cat-links">
+                                    {{-- <span class="cat-links">
                                         <a href="#0">{{ $post->categories->first()->title }}</a>
                                     </span>
                                     <span class="byline">
@@ -19,11 +19,21 @@
                                         <span class="author">
                                             <a href="#0">{{ $post->user->name }}</a>
                                         </span>
-                                    </span>
+                                    </span> --}}
                                 </div>
                                 <h1 class="s-hero__slide-text">
-                                    <a href="#0">{{ $post->title }}</a>
+                                    <a style="cursor: default" href="#0">{{ $post->title }}</a>
                                 </h1>
+                                <div class="s-hero__slide-meta">
+                                    <span class="cat-links">
+                                        <a style="cursor: default" href="#0">{{ $post->excerpt }}</a>
+                                    </span>
+                                    </div>
+                                <div class="s-hero__slide-meta">
+                                <span class="cat-links">
+                                    <a style="cursor: default" href="#0">{{ $post->body }}</a>
+                                </span>
+                                </div>
                             </div>
                         </div>
 
@@ -49,6 +59,7 @@
         </section> <!-- end s-hero -->
 
         <section class="s-content s-content--no-top-padding">
+            <h1 class="text-center">Kategorije</h1>
 
             <div class="s-bricks">
 

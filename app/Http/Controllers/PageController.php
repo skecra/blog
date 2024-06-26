@@ -12,7 +12,7 @@ class PageController extends Controller
         $posts = Post::where('featured', false)
                     ->with('user', 'categories')
                     ->get();
-        $categories = Category::all();
+        $categories = Category::orderBy('title', 'asc')->get();
         $featured = Post::featured()->take(3)->get();
         // dd($featured);
         return view('front.index', [

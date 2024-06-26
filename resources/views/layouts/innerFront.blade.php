@@ -49,7 +49,7 @@
 
         <div class="s-header__logo">
             <a class="logo" href="{{ route('home') }}">
-                <img src="{{ asset('images/logo.svg') }}" alt="Homepage">
+                <img src="{{ asset('images/oldLogo.svg') }}" alt="Homepage">
             </a>
         </div>
 

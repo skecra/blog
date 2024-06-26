@@ -3208,7 +3208,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     opacity: 0;
     visibility: hidden;
     width: 100%;
-    height: 100%;
+    height: 70vh;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     position: absolute;
@@ -3427,8 +3427,8 @@ button::-moz-focus-inner, input::-moz-focus-inner {
  * ------------------------------------------------------------------- */
 .s-header {
     --header-height: 8.8rem;
-    --logo-width: 96px;
-    --logo-height: 24px;
+    --logo-width: 130px;
+    --logo-height: 30px;
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -4026,7 +4026,7 @@ body.search-is-visible {
 .s-hero {
     width: 100%;
     height: 100vh;
-    min-height: calc(25.5 * var(--space));
+    min-height: calc(17 * var(--space));
     background-color: #151515;
     overflow: hidden;
     position: relative;
@@ -4040,7 +4040,7 @@ body.search-is-visible {
 }
 
 .s-hero__slider .slick-dots {
-    display: block;
+    display: none;
     list-style: none;
     width: 92%;
     max-width: var(--width-wide);
@@ -4053,7 +4053,7 @@ body.search-is-visible {
 }
 
 .s-hero__slider .slick-dots li {
-    display: inline;
+    display: none;
     padding-left: 0;
     margin-right: .8rem;
 }
@@ -4097,7 +4097,7 @@ body.search-is-visible {
 
 .s-hero__slider .s-hero__slide {
     height: 100vh;
-    min-height: calc(25.5 * var(--space));
+    min-height: calc(17 * var(--space));
     position: relative;
 }
 

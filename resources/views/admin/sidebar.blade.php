@@ -9,11 +9,11 @@
                 <div class="card-body">
                     <ul class="nav flex-column" role="tablist">
                         @foreach($section->items as $menu)
-                            <li class="nav-item" role="presentation">
+                            {{-- <li class="nav-item" role="presentation">
                                 <a class="nav-link" href="{{ url($menu->url) }}">
                                     {{ $menu->title }}
                                 </a>
-                            </li>
+                            </li> --}}
                         @endforeach
                     </ul>
                 </div>
