@@ -57,7 +57,7 @@ class UsersController extends Controller
                 'name' => 'required',
                 'email' => 'required|string|max:255|email|unique:users',
                 'password' => 'required',
-                'roles' => 'required'
+                // 'roles' => 'required'
             ]
         );
 
@@ -121,7 +121,7 @@ class UsersController extends Controller
             [
                 'name' => 'required',
                 'email' => 'required|string|max:255|email|unique:users,email,' . $id,
-                'roles' => 'required'
+                // 'roles' => 'required'
             ]
         );
 
@@ -133,10 +133,10 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $user->update($data);
 
-        $user->roles()->detach();
-        foreach ($request->roles as $role) {
-            $user->assignRole($role);
-        }
+        // $user->roles()->detach();
+        // foreach ($request->roles as $role) {
+        //     $user->assignRole($role);
+        // }
 
         return redirect('admin/users')->with('flash_message', 'User updated!');
     }
