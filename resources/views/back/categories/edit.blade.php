@@ -23,7 +23,7 @@
 @section('content')
     <!-- Main content -->
     <section class="content">
-        <form method="POST" action="{{ route('categories.update', $category->id) }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('categories.update', $category->id) }}">
             @csrf
             @method('PUT')
             <div class="row">
@@ -37,6 +37,10 @@
                                 <label for="title">Category Title</label>
                                 <input type="text" name="title" id="title" class="form-control"
                                     value="{{ $category->title }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Category Image</label>
+                                <input type="file" name="image" class="form-control-file" id="image">
                             </div>
                         </div>
                         <!-- /.card-body -->

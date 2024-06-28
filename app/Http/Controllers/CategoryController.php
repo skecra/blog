@@ -92,7 +92,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category, Request $request)
     {
-        dd($request);
         $category->delete();
         return back();
     }

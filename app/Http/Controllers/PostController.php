@@ -49,9 +49,9 @@ class PostController extends Controller
         if($request->has('image')){
             $this->uploadImage($request);
         }
-        // dd($request);
         $upis = $request->user()->posts()->create($request->post());
 
+        if($request->has('featured'))
         $categoryPost->category_id = $request->category;
         $categoryPost->post_id = $upis->id;
         $categoryPost->save();
