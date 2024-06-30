@@ -48,6 +48,8 @@
                             </th>
                             <th style="width: 25%">
                             </th>
+                            <th style="width: 25%">
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,6 +70,9 @@
                                         </i>
                                         Edit
                                     </a>
+                                   
+                                </td>
+                                <td>
                                     <form class="deletion-form{{$category->id}}" action="{{ route('categories.destroy', $category->id) }}"
                                         method="post">
                                         @csrf

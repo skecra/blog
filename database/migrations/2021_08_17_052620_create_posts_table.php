@@ -23,6 +23,9 @@ class CreatePostsTable extends Migration
             $table->string('slug')->unique();
             $table->text('excerpt');
             $table->text('body');
+            $table->text('email');
+            $table->text('phone_number');
+            $table->text('adresa');
             $table->boolean('featured')->default(false);
             $table->string('image');
             $table->timestamps();

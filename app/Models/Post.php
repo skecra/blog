@@ -17,6 +17,9 @@ class Post extends Model
         'body',
         'featured',
         'image',
+        'email',
+        'phone_number',
+        'adresa'
     ];
 
     public function setTitleAttribute($value)

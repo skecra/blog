@@ -32,6 +32,14 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
+        DB::table('categories')->insert([
+            [
+                'title' => 'Naslovna',
+                'image' =>   '/noimage',
+            ]
+        ]);
+
+
         // insert tags
         // DB::table('tags')->insert([
         //     ['tag' => 'Tag 1',],

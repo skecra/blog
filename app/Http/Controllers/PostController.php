@@ -51,13 +51,13 @@ class PostController extends Controller
         }
         $upis = $request->user()->posts()->create($request->post());
 
-        if($request->has('featured')){
-            
-        }
+        // dd($upis);
+    
         $categoryPost->category_id = $request->category;
         $categoryPost->post_id = $upis->id;
         $categoryPost->save();
 
+        
         // $post->title = $request->title;
         // $post->description = $request->description;
         // $post->featured = $request->featured;

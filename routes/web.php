@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
+// use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ Route::get('/category/{category}', 'PageController@showCategory')->name('categor
 // admin pages
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::resource('posts','PostController');
-    // Route::resource('categories','CategoryController')->except('show');
+    Route::resource('categories','CategoryController')->except('show');
     Route::resource('authors','AuthorController');
 });
 

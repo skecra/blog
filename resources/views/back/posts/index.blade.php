@@ -44,6 +44,7 @@
                             <th style="width: 10%">Author</th>
                             <th style="width: 15%">Slug</th>
                             <th style="width: 10%"></th>
+                            <th style="width: 10%"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,6 +66,9 @@
                                     <a class="btn btn-info btn-sm" href="{{ route('posts.edit', $post->id) }}">
                                         <i class="fas fa-pencil-alt"></i>Edit
                                     </a>
+                                  
+                                </td>
+                                <td>
                                     <form id="delete-post{{ $post->id }}" class="deletion-form"
                                         action="{{ route('posts.destroy', $post->id) }}" method="post">
                                         @csrf

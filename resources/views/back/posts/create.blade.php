@@ -23,10 +23,7 @@
                             <h3 class="card-title">General</h3>
                         </div>
                         <div class="card-body">
-                            <div class="form-check">
-                                <input name="featured" type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" name="featured" for="exampleCheck1">Featured Post</label>
-                            </div>
+                          
                             <div class="form-group">
                                 <label for="title">Post Title </label>
                                 <input type="text" name="title" id="title" class="form-control" required>
@@ -69,6 +66,20 @@
                                         <option value="{{ $category->id }}">{{ $category->title }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Adresa</label>
+                                <input type="text" name="adresa" class="form-control" id="adresa">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Email</label>
+                                <input type="text" name="email" class="form-control" id="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Broj telefona</label>
+                                <input type="text" name="phone_number" class="form-control" id="phone_number">
                             </div>
 
                             <div class="form-group">
